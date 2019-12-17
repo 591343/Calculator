@@ -1,6 +1,18 @@
 package genwind;
 
+
 import java.awt.*;
+
+import java.awt.BorderLayout;
+
+import java.awt.Color;
+
+import java.awt.Container;
+
+import java.awt.Font;
+
+import java.awt.GridLayout;
+
 
 import java.awt.event.ActionEvent;
 
@@ -22,17 +34,24 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import genwind.MiddleTraRear;
 
+<<<<<<< HEAD
 /**
  * @author: chenxiao
  * @date: 2019/12/17
  * 计算机视图类
  */
 
+=======
+
+ 
+ 
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 
 public class Calculator extends JApplet implements ActionListener
 
 {
 	/**
+<<<<<<< HEAD
 	 *
 	 */
 
@@ -50,6 +69,26 @@ public class Calculator extends JApplet implements ActionListener
 
 	boolean flagCharacter=true; //记录上次的字符是否为数字字符
 
+=======
+
+	 * 
+
+	 */
+
+	private static final long serialVersionUID = 1L;
+	
+
+	private JTextField textField = new JTextField("0",26);
+	
+    
+	private JTextArea ta=new JTextArea(11,12);//用于算术运算的结果记录
+
+	String operator = "";//操作
+	
+	boolean flag =  false;//判断是否进行了下次运算
+	
+	boolean flagCharacter=true; //记录上次的字符是否为数字字符
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 	
 	Vector<String> input=new Vector<String>();//操作的式子（用于方便回退）
 	
@@ -67,6 +106,7 @@ public class Calculator extends JApplet implements ActionListener
 
 		JPanel panel1= new JPanel();
 		JPanel panel2=  new JPanel();
+<<<<<<< HEAD
 		panel2.setLayout(new BorderLayout());
 		JPanel panel3=new JPanel();
 		computationInfo=new ComputationInfo();
@@ -89,6 +129,14 @@ public class Calculator extends JApplet implements ActionListener
 		JScrollPane sp=new JScrollPane(ta);
         panel2.add(sp,BorderLayout.CENTER);
         panel2.add(rollBackBtn,BorderLayout.SOUTH);
+=======
+		JPanel panel3=new JPanel();
+		
+		C.add(new JLabel("历史纪录",SwingConstants.RIGHT),BorderLayout.NORTH);//右对齐
+		
+		JScrollPane sp=new JScrollPane(ta);
+        panel2.add(sp,BorderLayout.SOUTH);
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
         
         panel1.add(textField, BorderLayout.NORTH);
 		C.add(panel2,BorderLayout.EAST);
@@ -124,7 +172,10 @@ public class Calculator extends JApplet implements ActionListener
 
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 	public void actionPerformed(ActionEvent e)//键盘符号动作处理
 
 	{    
@@ -151,21 +202,38 @@ public class Calculator extends JApplet implements ActionListener
 		
 		
 		else if(actionCommand.equals("Back")) {//回退键
+<<<<<<< HEAD
 				if(input.size()>0) {
 					input.remove(input.size() - 1);
 					textField.setText(Util.convertToString(input));
 				}
+=======
+                input.remove(input.size()-1);
+                textField.setText(convertToString(input));
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
                 
 		}
 		else if(actionCommand.equals("(")) { 
 			input.add(actionCommand+" ");
 			
 		}
+<<<<<<< HEAD
 
 		else if(actionCommand.equals(")")) {
 		   input.add(" "+actionCommand);
 		}
 
+=======
+		   
+		
+		
+		else if(actionCommand.equals(")")) {
+		   input.add(" "+actionCommand);
+		}
+		
+		    
+		
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 		else if(actionCommand.equals("C")) {
 			
 			input.clear();
@@ -176,6 +244,7 @@ public class Calculator extends JApplet implements ActionListener
 		else if(actionCommand.equals("="))//当监听到等号时，则处理 input
 
 		{
+<<<<<<< HEAD
 
 			textWord = Util.convertToString(input);
 			Vector<String> inputC=(Vector<String>) input.clone();
@@ -184,6 +253,11 @@ public class Calculator extends JApplet implements ActionListener
 		    c.setMemento(computationInfo.saveMemento());
 		    ta.append(textWord+"="+'\n');
 			input.add(Util.compute(transForm.tranRear(textWord)));
+=======
+		    textWord=convertToString(input);
+		    ta.append(textWord+'\n');
+			input.add(transForm.compute(transForm.tranRear(textWord)));
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 			textField.setText("");//清空编辑框
 			textField.setText(input.lastElement());
 			ta.append(input.lastElement()+'\n'+'\n');
@@ -202,6 +276,11 @@ public class Calculator extends JApplet implements ActionListener
 				else { 
 					input.add(actionCommand);
 				}
+<<<<<<< HEAD
+=======
+				
+				               
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 			 }
 			 
 			 else{
@@ -210,6 +289,7 @@ public class Calculator extends JApplet implements ActionListener
 			     }
 			
 		}
+<<<<<<< HEAD
 		if(cnt==0)
 		textField.setText(Util.convertToString(input));
 	}
@@ -218,6 +298,28 @@ public class Calculator extends JApplet implements ActionListener
 
 
 	public static void main(String args[])
+=======
+
+		if(cnt==0)
+
+		textField.setText(convertToString(input));
+
+	}
+	
+	public static String convertToString(Vector<String> a) {
+	String outcome="";
+	
+	
+	for(int i=0;i<a.size();i++) {
+	    outcome+=a.get(i);	
+	}
+	
+	return outcome;
+	}
+
+	public static void main(String args[])
+
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 	{
 
 		JFrame frame = new JFrame("计算器");
@@ -228,9 +330,16 @@ public class Calculator extends JApplet implements ActionListener
 
 		applet.init();//applet的init方法
 
+<<<<<<< HEAD
 		frame.setBounds(300, 300, 500, 300);//设置窗口大小
 
 		frame.setVisible(true);//设置窗口可见
+=======
+		frame.setBounds(300, 300, 450, 260);//设置窗口大小
+
+		frame.setVisible(true);//设置窗口可见
+
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 	}
 
 }

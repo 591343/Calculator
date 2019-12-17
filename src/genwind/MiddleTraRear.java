@@ -2,25 +2,36 @@ package genwind;
 
 import java.util.Stack;
 
+<<<<<<< HEAD
 /**
  * @author chenxiao
  * @date 2019/12/17
  * 中缀转后缀类
  */
+=======
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 class MiddleTraRear {
 	   
 	   Stack<Character> Symble=new Stack<Character>();//操作符存储栈
 	   
 	   char []yunsuanfu=new char[]{'-','+','/','*'};//运算符优先级数组
+<<<<<<< HEAD
 
 	   //中缀表达式转后缀表达式
+=======
+	   
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 	   public  String tranRear(String input) {
 		   String str[];
 		   
 		   str=input.split(" ");//将运算表达式各个对象拆分开，便于计算
 		   input="";
 		   
+<<<<<<< HEAD
 		   boolean flag=true;//判断"±"是否被添加过
+=======
+     boolean flag=true;//判断"±"是否被添加过		   
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 		   
 		   String result="";//中缀转后缀的结果
 		     
@@ -91,6 +102,69 @@ class MiddleTraRear {
 	   }
 	   
 	   
+<<<<<<< HEAD
 
+=======
+	  public  String compute(String input) {
+		  
+		  Stack<Double>number=new Stack<Double>();
+		  double  rear=0;
+		  String []str;
+		  String x="";
+		  str=input.split(" ");
+		  
+	       for(int i=0;i<str.length;i++) {
+	    	   Character a=(char)str[i].charAt(0);
+	    	   
+	    	   if(a.equals('±')) {//去掉字符串前的“±”
+	    		   for(int k=1;k<str[i].length();k++) {
+	    			  x+=str[i].charAt(k); 
+	    		   }
+	    		 
+	    		   
+	    		number.push(-Double.parseDouble(x));//将前面带"±"的字符串转换为负数   
+	    	   }
+	    	   
+	    	   
+	    		   //number.push(-Double.parseDouble())
+	    	   if(Character.isDigit((char)a)) {
+	    		   number.push(Double.parseDouble(str[i]));
+	    	   }
+	    	   
+	    	   else {
+	    		   switch(str[i]) {
+	    		   case "-":
+	    			   rear=number.pop();
+	    			   number.push(number.pop()-rear);
+	    			  
+	    			   break;
+	    		   case "+":
+	    			   rear=number.pop();
+	    			   number.push(number.pop()+rear); 
+	    			  
+	    			   break;
+	    			   
+	    		   case "*":
+	    			   rear=number.pop();
+	    			   number.push(number.pop()*rear); 
+	    			 
+	    			   break;
+	    			   
+	    		   case "/":
+	    			   rear=number.pop();
+	    			   number.push(number.pop()/rear); 
+	    			   
+	    			   break;
+	    			   
+	    			   default:
+	    		   }
+	    		   
+	    	   }
+	       }
+	       
+	       return number.pop().toString();
+	       
+	  }
+>>>>>>> 6280c7677c3968d782e68d0b8b7df7f63f5e65d6
 }
 		
